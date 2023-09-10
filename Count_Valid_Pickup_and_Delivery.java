@@ -7,6 +7,6 @@ public class Count_Valid_Pickup_and_Delivery {
         result = (result * (2 * i - 1) * i) % MOD;
     }
 
-    return (int) result;
+    return (int)result;
     }
 }
