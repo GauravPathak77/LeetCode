@@ -1,5 +1,5 @@
 class Group-the-people-given-the-group-size-they-belong-to{
-    public List<List<Integer>> groupThePeople(int[] groupSizes) {
+    public List<List<Integer>> groupThePeople(int[] groupSizes){
         Map<Integer, List<Integer>> map = new HashMap<>();
         List<List<Integer>> list = new ArrayList<>();
         for(int i=0; i<groupSizes.length; i++){
