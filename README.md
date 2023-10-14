@@ -1,25 +1,30 @@
-# LeetCode Problem Solutions
+# LeetCode Java Solutions
 
-![LeetCode Logo](https://assets.leetcode.com/static_assets/public/webpack_bundles/images/LeetCode_Sharing.png)
+![GitHub last commit](https://img.shields.io/github/last-commit/GauravPathak77/LeetCode)
+![GitHub repo size](https://img.shields.io/github/repo-size/GauravPathak77/LeetCode)
 
-Welcome to my LeetCode problem solutions repository! This repository contains my solutions to various LeetCode problems, implemented in Java.
+Welcome to my LeetCode Java Solutions repository! Here, you will find well-structured Java solutions to various LeetCode problems. This repository is organized by problem difficulty to help you navigate and find solutions efficiently.
 
 ## Table of Contents
 
 - [About](#about)
-- [Getting Started](#getting-started)
-- [Solutions](#solutions)
-- [Contribute](#contribute)
-- [License](#license)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [Contact](#contact)
 
 ## About
 
-LeetCode is a platform for practicing and mastering coding skills through competitive programming. This repository is a collection of my Java solutions to a wide range of problems available on LeetCode. Feel free to explore and use these solutions for your learning and reference.
+LeetCode is a popular platform for sharpening your algorithmic and data structure skills. This repository contains Java solutions to a wide range of problems from LeetCode, categorized by difficulty for your convenience.
 
-## Getting Started
+### Features
 
-If you'd like to explore the solutions or contribute to this repository, follow these steps:
+- Solutions for LeetCode problems.
+- Code written in Java.
+- Problem descriptions and explanations in comments.
 
-1. Clone the repository to your local machine:
-   ```sh
+## Usage
+
+1. Clone the repository:
+
+   ```bash
    git clone https://github.com/GauravPathak77/LeetCode.git
