@@ -4,6 +4,7 @@ class Solution {
             return false;
         }
 
+        
         int n = nums.length;
         int[] minArray = new int[n];
         minArray[0] = nums[0];
