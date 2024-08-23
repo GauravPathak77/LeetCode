@@ -1,0 +1,42 @@
+class Solution {
+    public String fractionAddition(String expression) {
+        int numerator = 0, denominator = 1;
+        int i = 0, len = expression.length();
+        
+        while (i < len) {
+            int sign = 1;
+            if (expression.charAt(i) == '-' || expression.charAt(i) == '+') {
+                sign = expression.charAt(i) == '-' ? -1 : 1;
+                i++;
+            }
+            
+            int num = 0;
+            while (i < len && Character.isDigit(expression.charAt(i))) {
+                num = num * 10 + (expression.charAt(i) - '0');
+                i++;
+            }
+            num *= sign;
+            
+            i++;
+            
+            int den = 0;
+            while (i < len && Character.isDigit(expression.charAt(i))) {
+                den = den * 10 + (expression.charAt(i) - '0');
+                i++;
+            }
+            
+            numerator = numerator * den + num * denominator;
+            denominator *= den;
+            
+            int gcd = gcd(Math.abs(numerator), denominator);
+            numerator /= gcd;
+            denominator /= gcd;
+        }
+        
+        return numerator + "/" + denominator;
+    }
+
+    private static int gcd(int a, int b) {
+        return b == 0 ? a : gcd(b, a % b);
+    }
+}
