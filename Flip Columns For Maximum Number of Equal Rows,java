@@ -1,0 +1,20 @@
+class Solution {
+    public int maxEqualRowsAfterFlips(int[][] matrix) {
+        Map<String, Integer> mp = new HashMap<>();
+
+        for (int[] row : matrix) {
+            int first = row[0];
+            StringBuilder canonical = new StringBuilder();
+            for (int num : row) {
+                canonical.append(num == first ? '1' : '0');
+            }
+            mp.put(canonical.toString(), mp.getOrDefault(canonical.toString(), 0) + 1);
+        }
+
+        int max = 0;
+        for (int count : mp.values()) {
+            max = Math.max(max, count);
+        }
+        return max;
+    }
+}
