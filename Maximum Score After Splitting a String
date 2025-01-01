@@ -1,0 +1,22 @@
+class Solution {
+    public int maxScore(String s) {
+        int n = s.length();
+        int ans = Integer.MIN_VALUE;
+
+        for(int i = 1; i < n; i++) {
+            int countZero = 0;
+            int countOne = 0;
+            for(int k = i-1; k >= 0; k--) {
+                if(s.charAt(k) == '0') countZero++;
+            }
+
+            for(int j = i; j < n; j++) {
+                if(s.charAt(j) == '1') countOne++;
+            }
+
+            ans = Math.max(ans, countZero + countOne);
+        }
+
+        return ans;
+    }
+}
