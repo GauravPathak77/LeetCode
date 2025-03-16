@@ -1,0 +1,36 @@
+class Solution {
+    private boolean isPossible(long mid, int[] ranks, int cars) {
+        long carCount = 0;
+
+        for(int rank : ranks) {
+            carCount += Math.sqrt(mid / rank);
+        }
+
+        return carCount >= cars;
+    }
+    public long repairCars(int[] ranks, int cars) {
+        long maxRank = -1;
+
+        for(int rank : ranks) {
+            maxRank = Math.max(maxRank, rank);
+        }
+
+        long l = 1;
+        long r = maxRank * cars * cars;
+        long res = -1;
+
+        while(l <= r) {
+            long mid = l + (r-l) / 2;
+
+            if(isPossible(mid, ranks, cars)) {
+                res = mid;
+                r = mid - 1;
+            }
+            else {
+                l = mid + 1;
+            }
+        }
+
+        return res;
+    }
+}
