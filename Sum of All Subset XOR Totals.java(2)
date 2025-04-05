@@ -1,0 +1,38 @@
+class Solution {
+    private void solve(int idx, int n, int[] nums, List<Integer> list, List<List<Integer>> st, Set<List<Integer>> vis) {
+        if(idx == n) {
+            if(!vis.contains(list)) {
+                List<Integer> temp = new ArrayList<>();
+                for(int i : list) {
+                    temp.add(nums[i]);
+                }
+                st.add(new ArrayList<>(temp));
+                vis.add(new ArrayList<>(list));
+            }
+            list = new ArrayList<>();
+            return;
+        }
+
+        list.add(idx);
+        solve(idx+1, n, nums, list, st, vis);
+        list.remove(list.size()-1);
+        solve(idx+1, n, nums, list, st, vis);
+    }
+    public int subsetXORSum(int[] nums) {
+        int n = nums.length;
+        List<List<Integer>> st = new ArrayList<>();
+        solve(0, n, nums, new ArrayList<>(), st, new HashSet<>());
+        int ans = 0;
+
+        for(List<Integer> list : st) {
+            int res = 0;
+            for(int num : list) {
+                res = (res ^ num);
+            }
+
+            ans += res;
+        }
+
+        return ans;
+    }
+}
