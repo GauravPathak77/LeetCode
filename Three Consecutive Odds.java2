@@ -1,0 +1,71 @@
+class Solution {
+    private boolean canDis(int[][] grid, int target, int r1, int r2, int c1, int c2) {
+        int m = grid.length, n = grid[0].length;
+        boolean[][] visited = new boolean[m][n];
+        Queue<int[]> q = new LinkedList<>();
+        int[] cell = null;
+
+        for (int i = r1; i <= r2 && cell == null; i++) {
+            for (int j = c1; j <= c2; j++) {
+                if (grid[i][j] == target) {
+                    cell = new int[]{i, j};
+                    break;
+                }
+            }
+        }
+
+        if (cell == null) return false;
+
+        boolean[][] part = new boolean[m][n];
+        for (int i = r1; i <= r2; i++) {
+            for (int j = c1; j <= c2; j++) {
+                part[i][j] = true;
+            }
+        }
+
+        part[cell[0]][cell[1]] = false;
+
+        boolean[][] vis = new boolean[m][n];
+        boolean found = false;
+        
+        for(int i = r1; i <= r2 && !found; i++) {
+            for(int j = c1; j <= c2; j++) {
+                if (part[i][j]) {
+                    dfs(grid, part, vis, i, j, r1, r2, c1, c2);
+                    found = true;
+                    break;
+                }
+            }
+        }
+
+    for(int i = r1; i <= r2; i++) {
+        for(int j = c1; j <= c2; j++) {
+            if(part[i][j] && !vis[i][j]) return false;
+        }
+    }
+
+        return true;
+    }
+    
+    public boolean canPartitionGrid(int[][] grid) {
+        int m = grid.length;
+        int n = grid[0].length;
+        int[][] res = grid;
+
+        for(int row = 1; row < m; row++) {
+            int sumTop = sumGrid(grid, 0, row - 1, 0, n - 1);
+            int sumBottom = sumGrid(grid, row, m - 1, 0, n - 1);
+            if(isValidPart(grid, sumTop, sumBottom, 0, row - 1, 0, n - 1, row, m - 1, 0, n - 1))
+                return true;
+        }
+
+        for(int col = 1; col < n; col++) {
+            int sumLeft = sumGrid(grid, 0, m - 1, 0, col - 1);
+            int sumRight = sumGrid(grid, 0, m - 1, col, n - 1);
+            if(isValidPart(grid, sumLeft, sumRight, 0, m - 1, 0, col - 1, 0, m - 1, col, n - 1))
+                return true;
+        }
+
+        return false;
+    }
+}©leetcode
