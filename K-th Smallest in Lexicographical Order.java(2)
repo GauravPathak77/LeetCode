@@ -1,0 +1,31 @@
+class Solution {
+    private long solve(long curr, long next, int n) {
+        long ans = 0;
+
+        while(curr <= n) {
+            ans += next - curr;
+            curr *= 10;
+            next = Math.min(next*10, n+1);
+        }
+
+        return ans;
+    }
+
+    public int findKthNumber(int n, int k) {
+        int curr = 1;
+        k--;
+
+        while(k > 0) {
+            long count = solve(curr, curr + 1, n);
+            if(count <= k) {
+                curr += 1;
+                k -= count;
+            } else {
+                curr *= 10;
+                k--;
+            }
+        }
+
+        return curr;
+    }
+}
