@@ -1,0 +1,17 @@
+class Solution {
+    public char kthCharacter(int k) {
+        String word = "a";
+
+        while(word.length() < k) {
+            StringBuilder sb = new StringBuilder(word);
+            for(char ch : word.toCharArray()) {
+                if(ch == 'z') ch = 'a';
+                else ch = (char)(ch + 1);
+                sb.append(ch);
+            }
+            word = sb.toString();
+        }
+
+        return word.charAt(k-1);
+    }
+}
