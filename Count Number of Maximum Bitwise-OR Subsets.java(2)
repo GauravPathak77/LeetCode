@@ -1,0 +1,28 @@
+class Solution {
+    private int solve(int idx, int[] nums, int currOR, int maxOR, int[][] memo) {
+        if(idx == nums.length) {
+            if(currOR == maxOR) return 1;
+            else return 0;
+        }
+
+        if(memo[idx][currOR] != -1) return memo[idx][currOR];
+
+        int take = solve(idx+1, nums, currOR | nums[idx], maxOR, memo);
+        int notTake = solve(idx+1, nums, currOR, maxOR, memo);
+
+        return memo[idx][currOR] = take + notTake;
+    }
+    public int countMaxOrSubsets(int[] nums) {
+        int n = nums.length;
+        int maxOR = 0;
+
+        for(int num : nums) {
+            maxOR = maxOR | num;
+        }
+        
+        int[][] memo = new int[n][maxOR + 1];
+
+        for(int[] row : memo) Arrays.fill(row, -1);
+        return solve(0, nums, 0, maxOR, memo);
+    }
+}
