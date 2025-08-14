@@ -1,0 +1,21 @@
+class Solution {
+    public String largestGoodInteger(String num) {
+        int n = num.length();
+        int ans = -1;
+
+        for(int i = 0; i <= n-3; i++) {
+            int a = Character.getNumericValue(num.charAt(i));
+            int b = Character.getNumericValue(num.charAt(i+1));
+            int c = Character.getNumericValue(num.charAt(i+2));
+
+            if(a == b && b == c) {
+                int x = a * 100 + b * 10 + c;
+                ans = Math.max(ans, x);
+            }
+        }
+
+        if(ans == -1) return "";
+        if(ans == 0) return "000";
+        else return Integer.toString(ans);
+    }
+}
